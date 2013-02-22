@@ -1,7 +1,18 @@
 GRBLMILL
 ========
 
-Firmware für 3D-Positionierer/Fräse c't Hacks 01/2013
+3D-Positionierer/Fräse aus c't Hacks 01/2013
+
+Verzeichnis GRBL: Firmware für Atmel ATmega328 mit Arduino-Bootloader, z.B. AT-Mini Board von mikroElektronika
+
 Mechanische Pläne für Selbstbau-Fräse
+
 Bezugsquellen
-Original-Unterlagen Hersteller
+
+Original-Unterlagen chin. Hersteller
+
+Schaltbilder zu TB6560-Schrittmotortreiberkarten siehe auch Repo heise/GRBLDRILL
+
+Alle Angaben ohne Gewähr
+
+by Carsten Meyer, c't Hacks (cm@ct.de)
