@@ -1,0 +1,38 @@
+PLOT REPORT
+-----------
+
+Report File    : E:\Dropbox\LABVIEW\STEPPER\HPGLDATA\square (PCB - PLOT REPORT).txt
+Report Written : Sunday, May 20, 2012
+Design Path    : E:\Dropbox\LABVIEW\STEPPER\HPGLDATA\square.pcb
+Design Title   : 
+Created        : 20.05.2012 17:19:01
+Last Saved     : 20.05.2012 17:24:12
+Editing Time   : 6 min
+Units          : mm (precision 2)
+
+DEVICE SETTINGS
+---------------
+
+-----------------
+Pen Plot Settings
+-----------------
+
+
+
+
+PLOTS OUTPUT
+------------
+    Plot Job: "E:\Dropbox\LABVIEW\STEPPER\HPGLDATA\ritzen.EPJ"
+
+
+Pen Plot Output
+---------------
+
+    "E:\Dropbox\LABVIEW\STEPPER\HPGLDATA\square - Ritzen.pen"
+
+    Layers:
+    -------
+    Ritzen
+
+
+End Of Report.
