@@ -140,7 +140,9 @@ uint8_t gc_execute_line(char *line)
   clear_vector(offset); // IJK Arc offsets are incremental. Value of zero indicates no change.
     
   gc.status_code = STATUS_OK;
-  
+
+  STEPPERS_ENABLE_PORT |= (1<<STEPPERS_ACTIVITY_BIT);
+
   /* Pass 1: Commands and set all modes. Check for modal group violations.
      NOTE: Modal group numbers are defined in Table 4 of NIST RS274-NGC v3, pg.20 */
   uint8_t group_number = MODAL_GROUP_NONE;

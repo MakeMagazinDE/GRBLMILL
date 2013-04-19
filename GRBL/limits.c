@@ -126,7 +126,7 @@ void limits_go_home() {
   plan_synchronize();
   // Enable steppers by resetting the stepper disable port
   STEPPERS_ENABLE_PORT |= (1<<STEPPERS_ENABLE_BIT);
-  STEPPERS_ENABLE_PORT |= (1<<STEPPERS_ACTIVITY_BIT);
+//  STEPPERS_ENABLE_PORT |= (1<<STEPPERS_ACTIVITY_BIT);
 //  STEPPERS_DISABLE_PORT &= ~(1<<STEPPERS_DISABLE_BIT);
 
   sys.position[X_AXIS]=0;
@@ -178,7 +178,6 @@ void limits_go_home() {
   // Disable steppers by setting stepper disable
   delay_ms(50);
   STEPPERS_ENABLE_PORT &= ~(1<<STEPPERS_ENABLE_BIT);
-  STEPPERS_ENABLE_PORT &= ~(1<<STEPPERS_ACTIVITY_BIT);
 //  STEPPERS_DISABLE_PORT |= (1<<STEPPERS_DISABLE_BIT);
 
 

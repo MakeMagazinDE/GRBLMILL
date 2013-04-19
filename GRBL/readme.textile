@@ -1,5 +1,12 @@
 h1. Grbl - An embedded g-code interpreter and motion-controller for the Arduino/AVR328 microcontroller
     
+*Spezielle Version v0.8a für c't-Hacks-Fräse, Q&D by cm@ct.de*
+  - G28 Homing implementiert, mit Beschleunigung
+  - 3 Endschalter für Homing
+  - autom. Homing nach Reset (abschaltbar in config.h)
+  - Befehl "M100", Reset für externes Zählermodul
+  - Switch-Report mit "%"
+
 Grbl is a no-compromise, high performance, low cost alternative to parallel-port-based motion control for CNC milling. It will run on a vanilla Arduino (Duemillanove/Uno) as long as it sports an Atmega 328. 
 
 The controller is written in highly optimized C utilizing every clever feature of the AVR-chips to achieve precise timing and asynchronous operation. It is able to maintain more than 30kHz of stable, jitter free control pulses.
@@ -23,6 +30,5 @@ Grbl includes full acceleration management with look ahead. That means the contr
   - Reduce serial read buffer to 128 characters and increased write buffer to 64 characters.
   - Misc bug fixes and removed deprecated acceleration enabled code.
 
-*Important note for Atmega 168 users:* Going forward, support for Atmega 168 will be dropped due to its limited memory and speed. However, legacy Grbl v0.51 "in the branch called 'v0_51' is still available for use.
 
 _The project was initially inspired by the Arduino GCode Interpreter by Mike Ellery_

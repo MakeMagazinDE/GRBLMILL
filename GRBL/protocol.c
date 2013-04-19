@@ -48,7 +48,9 @@ static void status_message(int status_code)
   	// evaluate emergency stop -cm
   uint8_t aux_bits;
   aux_bits = AUX_PIN ^ AUX_INVMASK; // apply invert mask
- 
+  
+  STEPPERS_ENABLE_PORT &= ~(1<<STEPPERS_ACTIVITY_BIT); // busy LED off
+  
   if (!(aux_bits & (1<<AUX_STOP_BIT)))
     {
     printPgmString(PSTR("stop\r\n"));

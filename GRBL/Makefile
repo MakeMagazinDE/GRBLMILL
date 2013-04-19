@@ -45,6 +45,9 @@ COMPILE = avr-gcc -Wall -Os -DF_CPU=$(CLOCK) -mmcu=$(DEVICE) -I. -ffunction-sect
 # symbolic targets:
 all:	grbl.hex
 
+# symbolic targets:
+new:	clean grbl.hex
+
 .c.o:
 	$(COMPILE) -c $< -o $@ 
 

@@ -90,12 +90,11 @@ static void st_wake_up()
   out_bits = (0) ^ (settings.invert_mask);
   // Set step pulse time. Ad hoc computation from oscilloscope.
   step_pulse_time = -(((settings.pulse_microseconds-2)*TICKS_PER_MICROSECOND) >> 3);
-  // Enable steppers by resetting the stepper disable port
-  STEPPERS_ENABLE_PORT |= (1<<STEPPERS_ENABLE_BIT) | (1<<STEPPERS_ACTIVITY_BIT);
-//  STEPPERS_DISABLE_PORT &= ~(1<<STEPPERS_DISABLE_BIT);
+  // Enable steppers 
+  STEPPERS_ENABLE_PORT |= (1<<STEPPERS_ENABLE_BIT);
+ //  STEPPERS_DISABLE_PORT &= ~(1<<STEPPERS_DISABLE_BIT);
   // Enable stepper driver interrupt
   TIMSK1 |= (1<<OCIE1A);
-
 }
 
 // Stepper shutdown
@@ -110,7 +109,6 @@ void st_go_idle()
   #endif
   // Disable steppers by setting stepper disable
   STEPPERS_ENABLE_PORT &= ~(1<<STEPPERS_ENABLE_BIT);
-  STEPPERS_ENABLE_PORT &= ~(1<<STEPPERS_ACTIVITY_BIT);
 //  STEPPERS_DISABLE_PORT |= (1<<STEPPERS_DISABLE_BIT);
 }
 
@@ -429,6 +427,7 @@ static uint32_t config_step_timer(uint32_t cycles)
 
 static void set_step_events_per_minute(uint32_t steps_per_minute)
 {
+
   if (steps_per_minute < MINIMUM_STEPS_PER_MINUTE) { steps_per_minute = MINIMUM_STEPS_PER_MINUTE; }
   st.cycles_per_step_event = config_step_timer((TICKS_PER_MICROSECOND*1000000*60)/steps_per_minute);
 }

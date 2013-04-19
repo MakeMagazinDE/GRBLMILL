@@ -34,7 +34,7 @@ void spindle_init()
 {
   current_direction = 0;
   SPINDLE_ENABLE_DDR |= (1<<SPINDLE_ENABLE_BIT);
-  SPINDLE_DIRECTION_DDR |= (1<<SPINDLE_DIRECTION_BIT);  
+//  SPINDLE_DIRECTION_DDR |= (1<<SPINDLE_DIRECTION_BIT);  
   spindle_stop();
 }
 
@@ -42,7 +42,6 @@ void spindle_stop()
 {
   current_direction = 0;
   SPINDLE_ENABLE_PORT &= ~(1<<SPINDLE_ENABLE_BIT);
-  // STEPPERS_ENABLE_PORT &= ~(1<<STEPPERS_ACTIVITY_BIT); // LED-Anzeige -cm
 }
 
 void spindle_run(int direction, uint32_t rpm) 
@@ -50,11 +49,12 @@ void spindle_run(int direction, uint32_t rpm)
   if (direction != current_direction) {
     plan_synchronize();
     if (direction) {
-      if(direction > 0) {
-        SPINDLE_DIRECTION_PORT &= ~(1<<SPINDLE_DIRECTION_BIT);
-      } else {
-        SPINDLE_DIRECTION_PORT |= 1<<SPINDLE_DIRECTION_BIT;
-      }
+
+//      if(direction > 0) {
+//        SPINDLE_DIRECTION_PORT &= ~(1<<SPINDLE_DIRECTION_BIT);
+//      } else {
+//        SPINDLE_DIRECTION_PORT |= 1<<SPINDLE_DIRECTION_BIT;
+//      }
       SPINDLE_ENABLE_PORT |= 1<<SPINDLE_ENABLE_BIT;
     } else {
       spindle_stop();     

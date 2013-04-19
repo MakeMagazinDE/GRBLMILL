@@ -43,15 +43,14 @@ typedef struct {
 } settings_v1_t;
 
 // Default settings (used when resetting eeprom-settings)
-#define MICROSTEPS 8
-#define DEFAULT_X_STEPS_PER_MM (40.0*MICROSTEPS)
-#define DEFAULT_Y_STEPS_PER_MM (40.0*MICROSTEPS)
-#define DEFAULT_Z_STEPS_PER_MM (12.5*MICROSTEPS)  // Kompromiss für Servo
-#define DEFAULT_STEP_PULSE_MICROSECONDS 30
+#define DEFAULT_X_STEPS_PER_MM (STEPS_PER_TURN/THREAD_PITCH)
+#define DEFAULT_Y_STEPS_PER_MM (STEPS_PER_TURN/THREAD_PITCH)
+#define DEFAULT_Z_STEPS_PER_MM (STEPS_PER_TURN/THREAD_PITCH)
+#define DEFAULT_STEP_PULSE_MICROSECONDS 25 // für China-Treiber-Board
 #define DEFAULT_MM_PER_ARC_SEGMENT 0.1
-#define DEFAULT_RAPID_FEEDRATE 500.0 // mm/min
-#define DEFAULT_FEEDRATE 200.0
-#define DEFAULT_ACCELERATION (DEFAULT_FEEDRATE*60*60/10.0) // mm/min^2
+#define DEFAULT_RAPID_FEEDRATE (450*THREAD_PITCH) // mm/min, ca. 1400 für 3mm/U, 2800 für 6mm/U Trapezspindeln
+#define DEFAULT_FEEDRATE 250.0
+#define DEFAULT_ACCELERATION (15*THREAD_PITCH) // mm/min^2, ca. 50 für 3mm/U, 100 für 6mm/U Trapezspindeln
 #define DEFAULT_JUNCTION_DEVIATION 0.05 // mm
 #define DEFAULT_STEPPING_INVERT_MASK 0
 // #define DEFAULT_AUTO_START 1 // Boolean

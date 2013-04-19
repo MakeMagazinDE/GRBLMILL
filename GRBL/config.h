@@ -17,14 +17,15 @@
 
   You should have received a copy of the GNU General Public License
   along with Grbl.  If not, see <http://www.gnu.org/licenses/>.
+
+   Some Q&D extensions by cm@ct.de for use with chinese stepper driver board.
+   See settings.c and settings.h for more #defines!
 */
 
 #ifndef config_h
 #define config_h
 
 // IMPORTANT: Any changes here requires a full re-compiling of the source code to propagate them.
-// Some extensions by -cm for use with chinese stepper driver board.
-// See settings.c and settings.h for more #defines!
 
 #define BAUD_RATE 9600
 
@@ -41,11 +42,11 @@
 #define STEPPERS_ENABLE_DDR    DDRB
 #define STEPPERS_ENABLE_PORT   PORTB
 #define STEPPERS_ENABLE_BIT    0  // Uno Digital Pin 8
-#define STEPPERS_ACTIVITY_BIT  5
+#define STEPPERS_ACTIVITY_BIT  5  // "active" red LED on MikroE MINI-AT board
 
 #define LIMIT_DDR     DDRB
 #define LIMIT_PIN     PINB
-#define LIMIT_INVMASK 0x00 // $0E for mechaStep/WinPC-NC compatible HW, $00 for Mach3
+#define LIMIT_INVMASK 0x00 // $0E for mechaStep/WinPC-NC compatible HW, $00 for chinese stepper driver board
 #define X_LIMIT_BIT   1    // Uno Digital Pin 9
 #define Y_LIMIT_BIT   2    // Uno Digital Pin 10
 #define Z_LIMIT_BIT   3    // Uno Digital Pin 11
@@ -55,17 +56,17 @@
 #define Z_LIMIT_PRESENT
 #define Y_HOME_FIRST	// swap home run order, Y first
 
-#define HOMING_CYCLE 200 // cycle time for homing
-#define HOMING_LEAVE_PULSES 25 // additional number of pulses after leaving limit switches
-
+#define HOMING_CYCLE 80 // cycle time for homing, depends on pulses per step (here 80 for 1600 = 1/8 step mode)
+#define HOMING_LEAVE_PULSES 100 // additional number of pulses after leaving limit switches
+// #define HOMING_ON_RESET // enable homing on reset
 
 #define SPINDLE_ENABLE_DDR DDRB
 #define SPINDLE_ENABLE_PORT PORTB
 #define SPINDLE_ENABLE_BIT 4  // Uno Digital Pin 12
 
-#define SPINDLE_DIRECTION_DDR DDRB
-#define SPINDLE_DIRECTION_PORT PORTB
-#define SPINDLE_DIRECTION_BIT 5  // Uno Digital Pin 13
+// #define SPINDLE_DIRECTION_DDR DDRB
+// #define SPINDLE_DIRECTION_PORT PORTB
+// #define SPINDLE_DIRECTION_BIT 5  // Uno Digital Pin 13, auf Activity LED!
 
 #define AUX_DDR 	DDRC
 #define AUX_PORT	PORTC
@@ -87,6 +88,12 @@
 // Bit 4 = Aux_17  (+16) AUX_16_BIT
 // Bit 5 = E-Stop  (+32) AUX_STOP_BIT
 // e.g. %Sw:[33] = E-Stop and X-Limit
+
+// Steigung der verwendeten Spindeln in mm pro Umdrehung
+// nur zur Berechnung der Default-Einstellungen, siehe settings.c
+#define THREAD_PITCH 3.0
+// Motor-Pulse pro Umdrehung, 1600 für Achtelschritt-Betrieb
+#define STEPS_PER_TURN 1600
 
 // Define runtime command special characters. These characters are 'picked-off' directly from the
 // serial read data stream and are not passed to the grbl line execution parser. Select characters
@@ -127,13 +134,13 @@
 // Minimum planner junction speed. Sets the default minimum speed the planner plans for at the end
 // of the buffer and all stops. This should not be much greater than zero and should only be changed
 // if unwanted behavior is observed on a user's machine when running at very slow speeds.
-#define MINIMUM_PLANNER_SPEED 0.1 // (mm/min)
+#define MINIMUM_PLANNER_SPEED 0.2 // (mm/min)
 
 // Minimum stepper rate. Sets the absolute minimum stepper rate in the stepper program and never runs
 // slower than this value, except when sleeping. This parameter overrides the minimum planner speed.
 // This is primarily used to guarantee that the end of a movement is always reached and not stop to
 // never reach its target. This parameter should always be greater than zero.
-#define MINIMUM_STEPS_PER_MINUTE 800 // (steps/min) - Integer value only
+#define MINIMUM_STEPS_PER_MINUTE 1600 // (steps/min) - Integer value only
 
 // Number of arc generation iterations by small angle approximation before exact arc trajectory
 // correction. This parameter maybe decreased if there are issues with the accuracy of the arc
