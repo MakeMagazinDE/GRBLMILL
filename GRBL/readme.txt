@@ -8,6 +8,13 @@ It accepts standards-compliant G-code and has been tested with the output of sev
 
 Grbl includes full acceleration management with look ahead. That means the controller will look up to 18 motions into the future and plan its velocities ahead to deliver smooth acceleration and jerk-free cornering.
 
+*Changelog for v0.8a3 from v0.8 by cm@ct.de:*
+  - Q&D Homing implemented on G28 or G30 command
+  - M100 command for resetting external pulse counter
+  - Defaults for c't Mill project on 3mm or 6mm threads
+  - Spindle direction output deleted
+  - Supports red "BUSY" LED on MINI-AT board from MikroE.com
+  
 *Changelog for v0.8 from v0.7:*
   - *ALPHA status: _Under heavy development. Code state may significantly change with each push as new features are integrated._*
   - Major structural overhaul to allow for multi-tasking events and new feature sets
