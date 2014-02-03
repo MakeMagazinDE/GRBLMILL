@@ -30,6 +30,7 @@
 #include "gcode.h"
 #include "protocol.h"
 #include "limits.h"
+#include "jogging.h"  // by cm
 #include "settings.h"
 #include "serial.h"
 
@@ -74,6 +75,7 @@ int main(void)
       gc_init(); // Set g-code parser to default state
       spindle_init();
       limits_init();
+      jog_init(); // by cm
       st_reset(); // Clear stepper subsystem variables.
 
 
