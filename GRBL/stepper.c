@@ -137,6 +137,7 @@ ISR(TIMER1_COMPA_vect)
 
   // Set the direction pins a couple of nanoseconds before we step the steppers
   STEPPING_PORT = (STEPPING_PORT & ~DIRECTION_MASK) | (out_bits & DIRECTION_MASK);
+
   uint8_t my_outbits;
   my_outbits = out_bits;
 
