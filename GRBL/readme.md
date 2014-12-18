@@ -1,3 +1,5 @@
+Note: Obsolete project. Please use heise/GRBL-JOG instead.
+
 h1. Grbl - An embedded g-code interpreter and motion-controller for the Arduino/AVR328 microcontroller
     
 Grbl is a no-compromise, high performance, low cost alternative to parallel-port-based motion control for CNC milling. It will run on a vanilla Arduino (Duemillanove/Uno) as long as it sports an Atmega 328. 
